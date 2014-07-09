@@ -23,7 +23,13 @@ describe ('character', function(){
 			expect(character.characterExperience != undefined).toBe(true);
 		});
 		it('must have abilityStrength', function(){
-			expect(character.abilityStrength != undefined).toBe(true);
+		    expect(character.abilityStrength != undefined).toBe(true);
+		    expect(character.abilityStrength == 10).toBe(true);
+		});
+		it('must have abilityStrengthModifier', function () {
+		    expect(character.abilityStrengthModifier != undefined).toBe(true);
+		    expect(character.abilityStrengthModifier).toEqual(0);
+
 		});
 		it('must have abilityDexterity', function(){
 			expect(character.abilityDexterity != undefined).toBe(true);
@@ -113,4 +119,8 @@ describe('available classes', function(){
 	it('must contain wizard', function(){
 		expect(availableClasses.any('Wizard')).toBe(true);
 	});
+});
+
+describe('skills list', function() {
+
 });
