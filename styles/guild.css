@@ -1,0 +1,79 @@
+#generator {
+	background-color: white;
+	border:1px solid #666666;
+	border-radius: 15px;
+	-moz-border-radius: 15px; /* Old Firefox */
+	box-shadow: 5px 5px 5px #cccccc;
+	color: #000000;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-size: 100%;
+	height: 600px;
+	margin: auto;
+	padding: 10px;
+	width: 800px;
+}
+span, td, th {
+	font-size: 0.6875em
+	color: #000000;
+}
+h1 {
+	color: #1E4E79;
+	text-align: center;
+	font-size: 1.0em;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+h2 {
+	color:#2E75B5;
+	text-align: center;
+	font-size: 0.875em;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+h3 {
+	color:#5B9BD5;
+	text-align:left;
+	font-size: 0.75em;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+th {
+	border-bottom: solid 1px black;
+}
+#generateGuildButton {
+	margin: auto;
+	text-align:center;
+}
+#tableGeneratedGuild {
+	width:100%;
+}
+#tableGeneratedGuild th {
+	text-align:center;
+}
+.columnRowHeader {
+	width:15%;
+}
+.columnGuildInformation {
+	text-align: center;
+	width:60%;
+}
+.columnGenerateButton {
+	text-align: center;
+	width:25%;
+}
+#tableGuildSize, #tableClasses {
+	width:100%;
+}
+.columnTownSize, .columnTownPopulation, .columnGuildPopulation,
+.columnGPLimit, #tableClasses th, #tableClasses td {
+	text-align: center;
+}
+#pcclasses, #npcclasses, button {
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-size: 0.6875em;
+	color:#000000;
+}
+
+#tableClassesTown, #tableClassesPC, #tableClassesNPC {
+	margin: auto;
+}
