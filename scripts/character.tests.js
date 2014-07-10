@@ -1,12 +1,16 @@
-describe ('character', function(){
+window.CharacterBuilder = window.CharacterBuilder || {};
+
+describe('character', function () {
+    var character = new window.CharacterBuilder.Character();
+
 	it('must exist', function(){
 		expect(character != undefined).toBe(true);
 	});
-
+    
 	describe('required properties', function(){
 		it('must have characterName', function(){
 			expect(character.characterName != undefined).toBe(true);
-		});
+		}); 
 		it('must have characterBackground', function(){
 			expect(character.characterBackground != undefined).toBe(true);
 		});
@@ -24,12 +28,10 @@ describe ('character', function(){
 		});
 		it('must have abilityStrength', function(){
 		    expect(character.abilityStrength != undefined).toBe(true);
-		    expect(character.abilityStrength == 10).toBe(true);
+		    expect(character.abilityStrength() == 10).toBe(true);
 		});
 		it('must have abilityStrengthModifier', function () {
 		    expect(character.abilityStrengthModifier != undefined).toBe(true);
-		    expect(character.abilityStrengthModifier).toEqual(0);
-
 		});
 		it('must have abilityDexterity', function(){
 			expect(character.abilityDexterity != undefined).toBe(true);
@@ -101,6 +103,30 @@ describe ('character', function(){
 		    expect(character.currentHitDice != undefined).toBe(true);
 		});
 	});
+
+	describe('ability modifiers', function () {
+	    var character;
+	    beforeEach(function() {
+	        character = new CharacterBuilder.Character();
+	    });
+
+	    it('must calculate modifier at 0', function () {
+	        expect(character.abilityStrength() == 10).toBe(true);
+	        expect(character.abilityStrengthModifier()).toEqual(0);
+	    }); 
+	    it('must calculate modifier at 5', function () {
+	        character.abilityStrength(20);
+	        expect(character.abilityStrengthModifier()).toEqual(5);
+	    }); 
+	    it('must calculate modifier at 1', function () {
+	        character.abilityStrength(13);
+	        expect(character.abilityStrengthModifier()).toEqual(1);
+	    }); 
+	    it('must calculate modifier at -5', function () {
+	        character.abilityStrength(1);
+	        expect(character.abilityStrengthModifier()).toEqual(-5);
+	    });
+    });
 });
 
 describe('available classes', function(){
