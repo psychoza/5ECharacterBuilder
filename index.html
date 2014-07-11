@@ -1,28 +1,48 @@
 <!DOCTYPE>
 <html>
-  <head>
+<head>
     <meta name="author" content="Jesse Hutchison" />
     <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
     <script type='text/javascript' src='scripts/character.core.js'></script>
     <script type='text/javascript' src='scripts/character.js'></script>
-  </head>
-  <body>
+</head>
+<body>
     <img src='images/logo.jpg' style='width: 50%;' />
     <h1>Character Builder</h1>
     <a href='tests.html'>Test Runner</a>
-      <br/>
-      <br/>
-      <br/>
-      <div id="abilityScores">
-          Strength: <input type="text" data-bind="value: abilityStrength" />
-          Modifier: <span data-bind="text: abilityStrengthModifier"></span>
-      </div>
+    <br />
+    <h1>Not compatible with IE</h1>
+    <br />
+    <div id="descriptions">
+        Name: <input type="text" data-bind="value: characterName" /><br />
+        Class: <select data-bind="options: availableClasses, value: characterClass, optionsCaption: 'Choose...'"></select><br />
+        Alignment: <select data-bind="options: availableAlignments, value: characterAlignment, optionsCaption: 'Choose...'"></select><br />
+        Background: <input type="text" data-bind="value: characterBackground" /><br />
+    </div>
+    <br />
+    <div id="abilityScores">
+        Strength: <input type="text" data-bind="value: abilityStrength, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityStrengthModifier"></span><br />
+        Dexterity: <input type="text" data-bind="value: abilityDexterity, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityDexterityModifier"></span><br />
+        Constitution: <input type="text" data-bind="value: abilityConstitution, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityConstitutionModifier"></span><br />
+        Intelligence: <input type="text" data-bind="value: abilityIntelligence, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityIntelligenceModifier"></span><br />
+        Wisdom: <input type="text" data-bind="value: abilityWisdom, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityWisdomModifier"></span><br />
+        Charisma: <input type="text" data-bind="value: abilityCharisma, valueUpdate:'afterkeydown'" />
+        Modifier: <span data-bind="text: abilityCharismaModifier"></span><br />
+    </div>
+    <br/>
+    <button data-bind="click: saveCharacter">Save</button>
+    <button data-bind="click: loadCharacter">Load</button>
 
-      <script>
-          var character = new window.CharacterBuilder.Character();
-          ko.applyBindings(character, $('body').get(0));
-      </script>
-  </body>
+    <script>
+        var character = new window.CharacterBuilder.Character();
+        ko.applyBindings(character, $('body').get(0));
+    </script>
+</body>
 </html>

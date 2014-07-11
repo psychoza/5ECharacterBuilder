@@ -147,6 +147,39 @@ describe('available classes', function(){
 	});
 });
 
+describe('available alignments', function(){
+	it('must exist', function(){
+		expect(availableAlignments).toBeDefined();
+	});
+	it('must contain lawful good', function(){
+	    expect(availableAlignments.any('Lawful Good')).toBe(true);
+	});
+	it('must contain neutral good', function(){
+	    expect(availableAlignments.any('Neutral Good')).toBe(true);
+	});
+	it('must contain chaotic good', function(){
+	    expect(availableAlignments.any('Chaotic Good')).toBe(true);
+	});
+	it('must contain lawful neutral', function(){
+	    expect(availableAlignments.any('Lawful Neutral')).toBe(true);
+	});
+	it('must contain neutral', function(){
+	    expect(availableAlignments.any('Neutral')).toBe(true);
+	});
+	it('must contain chaotic neutral', function () {
+	    expect(availableAlignments.any('Chaotic Neutral')).toBe(true);
+	});
+	it('must contain lawful evil', function(){
+	    expect(availableAlignments.any('Lawful Evil')).toBe(true);
+	});
+	it('must contain neutral evil', function () {
+	    expect(availableAlignments.any('Neutral Evil')).toBe(true);
+	});
+	it('must contain chaotic evil', function () {
+	    expect(availableAlignments.any('Chaotic Evil')).toBe(true);
+	});
+});
+
 describe('skills list', function() {
 
 });
