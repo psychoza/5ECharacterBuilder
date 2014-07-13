@@ -8,12 +8,15 @@
 		<script type='text/javascript' src='scripts/character.js'></script>
 	</head>
 	<body>
+		<button data-bind="click: saveCharacter">Save</button>
+		<button data-bind="click: loadCharacter">Load</button>
+
 		<div class="imageContainer">
 			<input data-bind="value: characterName" name="characterName" class="characterName" />
 			<input data-bind="value: abilityStrength, valueUpdate:'afterkeydown'" class="abilityStrength" />
 			<span data-bind="text: abilityStrengthModifier" class="abilityStrengthModifier" >1</h2>
 		</div>	
-			
+
 		<script>
 			var character = new window.CharacterBuilder.Character();
 			ko.applyBindings(character, $('body').get(0));
