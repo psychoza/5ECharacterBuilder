@@ -1,13 +1,4 @@
-//(function(ns) {
-//    ns.mything = function() {
-//        return this;
-//    };
-//})(namespace || {});
-
-//var mything = new Namespace.mything();
-
 // WIP:
-// Needs to SAVE!!!! (JSON?)
 // Needs to Export!!!! (Export JSON File?)
 // Needs to import exported file!!!!
 
@@ -60,18 +51,24 @@
 })(window.CharacterBuilder = window.CharacterBuilder || {});
 
 var saveCharacter = function (character) {
-    var savedCharacter = {};
-    savedCharacter.Strength = character.abilityStrength();
-
-    window.localStorage.setItem('5ECharacterBuilder', JSON.stringify(savedCharacter));
+    window.localStorage.setItem('5ECharacterBuilder', ko.toJSON(character));
 };
 
-var loadCharacter = function(character) {
-    var loadedCharacter = JSON.parse(window.localStorage.getItem('5ECharacterBuilder'));
-    character.abilityStrength(loadedCharacter.Strength);
+var loadCharacter = function (character) {
+    var loadedCharacter = window.localStorage.getItem('5ECharacterBuilder');
+
+    if (loadedCharacter != undefined) {
+        var parsed = JSON.parse(loadedCharacter);
+        character.abilityStrength(parsed.abilityStrength); 
+        character.abilityDexterity(parsed.abilityDexterity);
+        character.abilityConstitution(parsed.abilityConstitution);
+        character.abilityIntelligence(parsed.abilityIntelligence);
+        character.abilityWisdom(parsed.abilityWisdom);
+        character.abilityCharisma(parsed.abilityCharisma);
+    }
 }; 
 
-var availableClasses = ['Fighter', 'Cleric', 'Wizard', 'Rogue'];
+var availableClasses = ['Cleric', 'Fighter', 'Rogue', 'Wizard'];
 
 var availableAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good',
                            'Lawful Neutral', 'Neutral', 'Chaotic Neutral',

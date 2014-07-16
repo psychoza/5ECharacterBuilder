@@ -34,19 +34,39 @@ describe('character', function () {
 		    expect(character.abilityStrengthModifier != undefined).toBe(true);
 		});
 		it('must have abilityDexterity', function(){
-			expect(character.abilityDexterity != undefined).toBe(true);
+		    expect(character.abilityDexterity != undefined).toBe(true);
+		    expect(character.abilityDexterity() == 10).toBe(true);
+		});
+		it('must have abilityDexterityModifier', function () {
+		    expect(character.abilityDexterityModifier != undefined).toBe(true);
 		});
 		it('must have abilityConstitution', function(){
-			expect(character.abilityConstitution != undefined).toBe(true);
+		    expect(character.abilityConstitution != undefined).toBe(true);
+		    expect(character.abilityConstitution() == 10).toBe(true);
+		});
+		it('must have abilityConstitutionModifier', function () {
+		    expect(character.abilityConstitutionModifier != undefined).toBe(true);
 		});
 		it('must have abilityIntelligence', function(){
-			expect(character.abilityIntelligence != undefined).toBe(true);
+		    expect(character.abilityIntelligence != undefined).toBe(true);
+		    expect(character.abilityIntelligence() == 10).toBe(true);
+		});
+		it('must have abilityIntelligenceModifier', function () {
+		    expect(character.abilityIntelligenceModifier != undefined).toBe(true);
 		});
 		it('must have abilityWisdom', function(){
-			expect(character.abilityWisdom != undefined).toBe(true);
+		    expect(character.abilityWisdom != undefined).toBe(true);
+		    expect(character.abilityWisdom() == 10).toBe(true);
+		});
+		it('must have abilityWisdomModifier', function () {
+		    expect(character.abilityWisdomModifier != undefined).toBe(true);
 		});
 		it('must have abilityCharisma', function(){			
-			expect(character.abilityCharisma != undefined).toBe(true);
+		    expect(character.abilityCharisma != undefined).toBe(true);
+		    expect(character.abilityCharisma() == 10).toBe(true);
+		});
+		it('must have abilityCharismaModifier', function () {
+		    expect(character.abilityCharismaModifier != undefined).toBe(true);
 		});
 		it('must have armorClass', function(){
 			expect(character.armorClass != undefined).toBe(true);
@@ -80,7 +100,7 @@ describe('character', function () {
 		});
 		it('must have age', function(){
 		    expect(character.age != undefined).toBe(true);
-		});+
+		});
 		it('must have height', function(){
 		    expect(character.height != undefined).toBe(true);
 		});
@@ -105,7 +125,6 @@ describe('character', function () {
 	});
 
 	describe('ability modifiers', function () {
-	    var character;
 	    beforeEach(function() {
 	        character = new CharacterBuilder.Character();
 	    });
@@ -180,6 +199,97 @@ describe('available alignments', function(){
 	});
 });
 
-describe('skills list', function() {
+describe('character storage', function () {
+    describe('save functionality', function() {
+        it('must exist', function () {
+            expect(saveCharacter != undefined).toBe(true);
+        });
+        it('it calls data storage with provided character information', function () {
+            var character = new window.CharacterBuilder.Character();
+            var storageSpy = spyOn(window.localStorage, 'setItem');
+            var savedCharacter = ko.toJSON(character);
 
-});
+            saveCharacter(character);
+
+            expect(storageSpy).toHaveBeenCalledWith('5ECharacterBuilder', savedCharacter);
+        });
+    });
+
+    describe('load functionality', function () {
+        var character;
+
+        beforeEach(function() {
+            character = new window.CharacterBuilder.Character();
+        });
+
+        it('must exist', function () {
+            expect(loadCharacter != undefined).toBe(true);
+        });
+        it('it calls data storage with the character builder key', function () {
+            //debugger;
+            var storageSpy = spyOn(window.localStorage, 'getItem');
+            loadCharacter(character);
+            expect(storageSpy).toHaveBeenCalledWith('5ECharacterBuilder');
+        });
+        //it("it must change the view model's strength to the loaded model from storage's strength", function () {
+        //    character.abilityStrength(11);
+        //    var storageSpy = spyOn(window.localStorage, 'getItem').and.callFake(function () {
+        //        var jsonCharacter = ko.toJSON(character);
+        //        return jsonCharacter;
+        //    });
+        //    character.abilityStrength(10);
+        //    loadCharacter(character);
+        //    expect(character.abilityStrength()).toEqual(11);
+        //}); // it may work -Sean 2014
+
+        describe("it must change the view model's property to the loaded model's property", function () {
+            beforeEach(function () {
+                character = new window.CharacterBuilder.Character();
+            });
+
+            it("abilityStrength", function () {
+                character.abilityStrength(11);
+                saveCharacter(character);
+                character.abilityStrength(10);
+                loadCharacter(character);
+                expect(character.abilityStrength()).toEqual(11);
+            });
+
+            it("abilityDexterity", function () {
+                character.abilityDexterity(11);
+                saveCharacter(character);
+                character.abilityDexterity(10);
+                loadCharacter(character);
+                expect(character.abilityDexterity()).toEqual(11);
+            });
+            it("abilityConstitution", function () {
+                character.abilityConstitution(11);
+                saveCharacter(character);
+                character.abilityConstitution(10);
+                loadCharacter(character);
+                expect(character.abilityConstitution()).toEqual(11);
+            });
+            it("abilityIntelligence", function () {
+                character.abilityIntelligence(11);
+                saveCharacter(character);
+                character.abilityIntelligence(10);
+                loadCharacter(character);
+                expect(character.abilityIntelligence()).toEqual(11);
+            });
+            it("abilityWisdom", function () {
+                character.abilityWisdom(11);
+                saveCharacter(character);
+                character.abilityWisdom(10);
+                loadCharacter(character);
+                expect(character.abilityWisdom()).toEqual(11);
+            });
+            it("abilityCharisma", function () {
+                character.abilityCharisma(11);
+                saveCharacter(character);
+                character.abilityCharisma(10);
+                loadCharacter(character);
+                expect(character.abilityCharisma()).toEqual(11);
+            });
+        });
+    });
+})
