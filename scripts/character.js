@@ -27,6 +27,23 @@
         self.abilityCharismaModifier = ko.computed({ read: function () { return modifierCalculation(self.abilityCharisma()); } });
 
         self.skillAcrobatics = self.abilityDexterityModifier;
+        self.skillAnimalHandling = self.abilityWisdomModifier;
+        self.skillArcana = self.abilityIntelligenceModifier;
+        self.skillAthletics = self.abilityStrengthModifier;
+        self.skillDeception = self.abilityCharismaModifier;
+        self.skillHistory = self.abilityIntelligenceModifier;
+        self.skillInsight = self.abilityWisdomModifier;
+        self.skillIntimidation = self.abilityCharismaModifier;
+        self.skillInvestigation = self.abilityIntelligenceModifier;
+        self.skillMedicine = self.abilityWisdomModifier;
+        self.skillNature = self.abilityIntelligenceModifier;
+        self.skillPerception = self.abilityWisdomModifier;
+        self.skillPerformance = self.abilityCharismaModifier;
+        self.skillPersuasion = self.abilityCharismaModifier;
+        self.skillReligion = self.abilityIntelligenceModifier;
+        self.skillSleightOfHand = self.abilityDexterityModifier;
+        self.skillStealth = self.abilityDexterityModifier;
+        self.skillSurvival = self.abilityWisdomModifier;
 
         self.armorClass = '';
         self.initiative = '';

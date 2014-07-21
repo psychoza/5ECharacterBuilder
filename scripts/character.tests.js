@@ -199,6 +199,76 @@ describe('available alignments', function(){
 	});
 });
 
+describe('character skills', function () {
+    var character = new window.CharacterBuilder.Character();
+
+    it('all must exist', function() {
+        expect(character.skillAcrobatics).toBeDefined();
+        expect(character.skillAnimalHandling).toBeDefined();
+        expect(character.skillArcana).toBeDefined();
+        expect(character.skillAthletics).toBeDefined();
+        expect(character.skillDeception).toBeDefined();
+        expect(character.skillHistory).toBeDefined();
+        expect(character.skillInsight).toBeDefined();
+        expect(character.skillIntimidation).toBeDefined();
+        expect(character.skillInvestigation).toBeDefined();
+        expect(character.skillMedicine).toBeDefined();
+        expect(character.skillNature).toBeDefined();
+        expect(character.skillPerception).toBeDefined();
+        expect(character.skillPerformance).toBeDefined();
+        expect(character.skillPersuasion).toBeDefined();
+        expect(character.skillReligion).toBeDefined();
+        expect(character.skillSleightOfHand).toBeDefined();
+        expect(character.skillStealth).toBeDefined();
+        expect(character.skillSurvival).toBeDefined();
+    });
+
+    it('strength skills use strength modifier as value', function () {
+        expect(character.skillAthletics).toBe(character.abilityStrengthModifier);
+    });
+
+    it('dexterity skills use dexterity modifier as value', function () {
+        expect(character.skillAcrobatics).toBe(character.abilityDexterityModifier);
+        expect(character.skillSleightOfHand).toBe(character.abilityDexterityModifier);
+        expect(character.skillStealth).toBe(character.abilityDexterityModifier);
+        
+    });
+
+    it('intelligence skills use intelligence modifier as value', function () {
+        expect(character.skillArcana).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillHistory).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillInvestigation).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillNature).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillReligion).toBe(character.abilityIntelligenceModifier);
+    });
+
+    it('wisdom skills use wisdom modifier as value', function () {
+        expect(character.skillAnimalHandling).toBe(character.abilityWisdomModifier);
+        expect(character.skillInsight).toBe(character.abilityWisdomModifier);
+        expect(character.skillMedicine).toBe(character.abilityWisdomModifier);
+        expect(character.skillPerception).toBe(character.abilityWisdomModifier);
+        expect(character.skillSurvival).toBe(character.abilityWisdomModifier);
+    });
+
+    it('charisma skills use charisma modifier as value', function () {
+        expect(character.skillDeception).toBe(character.abilityCharismaModifier);
+        expect(character.skillIntimidation).toBe(character.abilityCharismaModifier);
+        expect(character.skillPerformance).toBe(character.abilityCharismaModifier);
+        expect(character.skillPersuasion).toBe(character.abilityCharismaModifier);
+    });
+});
+
+
+
+// *********************************************************
+// *                                                       *
+// *  Consider Changing tests to use a 'fake' database...  *
+// * One that uses the key 5ECharacterBuilderTests so the  *
+// * save state is not at risk for the developer and his   *
+// * character.                                            *
+// *                                                       *
+// ********************************************************* 
+
 describe('character storage', function () {
     describe('save functionality', function() {
         it('must exist', function () {

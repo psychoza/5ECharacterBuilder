@@ -1,25 +1,27 @@
 <!DOCTYPE>
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="tuckers.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
-		<script type='text/javascript' src='scripts/character.core.js'></script>
-		<script type='text/javascript' src='scripts/character.js'></script>
-	</head>
-	<body>
-		<button data-bind="click: saveCharacter">Save</button>
-		<button data-bind="click: loadCharacter">Load</button>
+<head>
+    <link rel="stylesheet" type="text/css" href="tuckers.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
+    <script type='text/javascript' src='scripts/character.core.js'></script>
+    <script type='text/javascript' src='scripts/character.js'></script>
+</head>
+<body>
+    <div data-bind="visible: window.localStorage !== undefined" style="display: none">
+        <button data-bind="click: saveCharacter">Save</button>
+        <button data-bind="click: loadCharacter">Load</button>
+    </div>
 
-		<div class="imageContainer">
-			<input data-bind="value: characterName" name="characterName" class="characterName" />
-			<input data-bind="value: abilityStrength, valueUpdate:'afterkeydown'" class="abilityStrength" />
-			<span data-bind="text: abilityStrengthModifier" class="abilityStrengthModifier" >1</h2>
-		</div>	
+    <div class="imageContainer">
+        <input data-bind="value: characterName" name="characterName" class="characterName" />
+        <input data-bind="value: abilityStrength, valueUpdate:'afterkeydown'" class="abilityStrength" />
+        <span data-bind="text: abilityStrengthModifier" class="abilityStrengthModifier">1</h2>
+    </div>
 
-		<script>
-			var character = new window.CharacterBuilder.Character();
-			ko.applyBindings(character, $('body').get(0));
-		</script>
-	</body>
+    <script>
+        var character = new window.CharacterBuilder.Character();
+        ko.applyBindings(character, $('body').get(0));
+    </script>
+</body>
 </html>

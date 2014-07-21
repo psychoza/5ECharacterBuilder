@@ -13,9 +13,9 @@
     <h1>Character Builder</h1>
     <a href='tests.html'>Test Runner</a>
     <br />
-    <h1>Not compatible with IE</h1>
-    <br />
+
     <div id="descriptions">
+        <h3>Character Details</h3>
         Name: <input type="text" data-bind="value: characterName" /><br />
         Class: <select data-bind="options: availableClasses, value: characterClass, optionsCaption: 'Choose...'"></select><br />
         Alignment: <select data-bind="options: availableAlignments, value: characterAlignment, optionsCaption: 'Choose...'"></select><br />
@@ -23,6 +23,7 @@
     </div>
     <br />
     <div id="abilityScores">
+        <h3>Abilities</h3>
         Strength: <input type="text" data-bind="value: abilityStrength, valueUpdate:'afterkeydown'" />
         Modifier: <span data-bind="text: abilityStrengthModifier"></span><br />
         Dexterity: <input type="text" data-bind="value: abilityDexterity, valueUpdate:'afterkeydown'" />
@@ -36,9 +37,33 @@
         Charisma: <input type="text" data-bind="value: abilityCharisma, valueUpdate:'afterkeydown'" />
         Modifier: <span data-bind="text: abilityCharismaModifier"></span><br />
     </div>
+    <br />
+    <div id="skills">
+        <h3>Skills</h3>
+        <span data-bind="text: skillAcrobatics"></span> Acrobatics (Dex)<br />
+        <span data-bind="text: skillAnimalHandling"></span> Animal Handling (Wis)<br />
+        <span data-bind="text: skillArcana"></span> Arcana (Int)<br />
+        <span data-bind="text: skillAthletics"></span> Athletics (Str)<br />
+        <span data-bind="text: skillDeception"></span> Deception (Cha)<br />
+        <span data-bind="text: skillHistory"></span> History (Int)<br />
+        <span data-bind="text: skillInsight"></span> Insight (Wis)<br />
+        <span data-bind="text: skillIntimidation"></span> Intimidation (Cha)<br />
+        <span data-bind="text: skillInvestigation"></span> Investigation (Int)<br />
+        <span data-bind="text: skillMedicine"></span> Medicine (Wis)<br />
+        <span data-bind="text: skillNature"></span> Nature (Int)<br />
+        <span data-bind="text: skillPerception"></span> Perception (Wis)<br />
+        <span data-bind="text: skillPerformance"></span> Performance (Cha)<br />
+        <span data-bind="text: skillPersuasion"></span> Persuasion (Cha)<br />
+        <span data-bind="text: skillReligion"></span> Religion (Int)<br />
+        <span data-bind="text: skillSleightOfHand"></span> Sleight of Hand (Dex)<br />
+        <span data-bind="text: skillStealth"></span> Stealth (Dex)<br />
+        <span data-bind="text: skillSurvival"></span> Survival (Wis)<br />
+    </div>
     <br/>
-    <button data-bind="click: saveCharacter">Save</button>
-    <button data-bind="click: loadCharacter">Load</button>
+    <div data-bind="visible: window.localStorage !== undefined" style="display: none">
+        <button data-bind="click: saveCharacter">Save</button>
+        <button data-bind="click: loadCharacter">Load</button>
+    </div>
 
     <script>
         var character = new window.CharacterBuilder.Character();
