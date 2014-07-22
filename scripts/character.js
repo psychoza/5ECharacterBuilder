@@ -1,16 +1,16 @@
-// WIP:
+    // WIP:
 // Needs to Export!!!! (Export JSON File?)
 // Needs to import exported file!!!!
 
 (function(cb) {
     cb.Character = function() {
         var self = this;
-        self.characterName = '';
-        self.characterClass = '';
-        self.characterAlignment = '';
-        self.characterBackground = '';
-        self.characterRace = '';
-        self.characterExperience = '';
+        self.characterName = ko.observable('');
+        self.characterClass = ko.observable('');
+        self.characterAlignment = ko.observable('');
+        self.characterBackground = ko.observable('');
+        self.characterRace = ko.observable('');
+        self.characterExperience = ko.observable('');
 
         var modifierCalculation = function (abilityScore) { return ( Math.floor(abilityScore / 2) - 5); }
         self.abilityStrength = ko.observable(10);
@@ -76,6 +76,11 @@ var loadCharacter = function (character) {
 
     if (loadedCharacter != undefined) {
         var parsed = JSON.parse(loadedCharacter);
+        character.characterName(parsed.characterName);
+        character.characterClass(parsed.characterClass);
+        character.characterAlignment(parsed.characterAlignment);
+        character.characterBackground(parsed.characterBackground);
+
         character.abilityStrength(parsed.abilityStrength); 
         character.abilityDexterity(parsed.abilityDexterity);
         character.abilityConstitution(parsed.abilityConstitution);

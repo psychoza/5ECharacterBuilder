@@ -258,8 +258,6 @@ describe('character skills', function () {
     });
 });
 
-
-
 // *********************************************************
 // *                                                       *
 // *  Consider Changing tests to use a 'fake' database...  *
@@ -359,6 +357,35 @@ describe('character storage', function () {
                 character.abilityCharisma(10);
                 loadCharacter(character);
                 expect(character.abilityCharisma()).toEqual(11);
+            });
+
+            it("characterName", function () {
+                character.characterName('Test');
+                saveCharacter(character);
+                character.characterName('');
+                loadCharacter(character);
+                expect(character.characterName()).toEqual('Test');
+            });
+            it("characterClass", function () {
+                character.characterClass('Fighter');
+                saveCharacter(character);
+                character.characterClass('');
+                loadCharacter(character);
+                expect(character.characterClass()).toEqual('Fighter');
+            });
+            it("characterAlignment", function () {
+                character.characterAlignment('Neutral');
+                saveCharacter(character);
+                character.characterAlignment('');
+                loadCharacter(character);
+                expect(character.characterAlignment()).toEqual('Neutral');
+            });
+            it("characterBackground", function () {
+                character.characterBackground('Soldier');
+                saveCharacter(character);
+                character.characterBackground('');
+                loadCharacter(character);
+                expect(character.characterBackground()).toEqual('Soldier');
             });
         });
     });
