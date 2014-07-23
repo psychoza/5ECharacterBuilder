@@ -26,24 +26,31 @@
         self.abilityCharisma = ko.observable(10);
         self.abilityCharismaModifier = ko.computed({ read: function () { return modifierCalculation(self.abilityCharisma()); } });
 
-        self.skillAcrobatics = self.abilityDexterityModifier;
-        self.skillAnimalHandling = self.abilityWisdomModifier;
-        self.skillArcana = self.abilityIntelligenceModifier;
-        self.skillAthletics = self.abilityStrengthModifier;
-        self.skillDeception = self.abilityCharismaModifier;
-        self.skillHistory = self.abilityIntelligenceModifier;
-        self.skillInsight = self.abilityWisdomModifier;
-        self.skillIntimidation = self.abilityCharismaModifier;
-        self.skillInvestigation = self.abilityIntelligenceModifier;
-        self.skillMedicine = self.abilityWisdomModifier;
-        self.skillNature = self.abilityIntelligenceModifier;
-        self.skillPerception = self.abilityWisdomModifier;
-        self.skillPerformance = self.abilityCharismaModifier;
-        self.skillPersuasion = self.abilityCharismaModifier;
-        self.skillReligion = self.abilityIntelligenceModifier;
-        self.skillSleightOfHand = self.abilityDexterityModifier;
-        self.skillStealth = self.abilityDexterityModifier;
-        self.skillSurvival = self.abilityWisdomModifier;
+        self.savingThrowStrength = new modifierProficiency(self.abilityStrengthModifier);
+        self.savingThrowDexterity = new modifierProficiency(self.abilityDexterityModifier);
+        self.savingThrowConstitution = new modifierProficiency(self.abilityConstitutionModifier);
+        self.savingThrowIntelligence = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.savingThrowWisdom = new modifierProficiency(self.abilityWisdomModifier);
+        self.savingThrowCharisma = new modifierProficiency(self.abilityCharismaModifier);
+
+        self.skillAcrobatics = new modifierProficiency(self.abilityDexterityModifier);
+        self.skillAnimalHandling = new modifierProficiency(self.abilityWisdomModifier);
+        self.skillArcana = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.skillAthletics = new modifierProficiency(self.abilityStrengthModifier);
+        self.skillDeception = new modifierProficiency(self.abilityCharismaModifier);
+        self.skillHistory = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.skillInsight = new modifierProficiency(self.abilityWisdomModifier);
+        self.skillIntimidation = new modifierProficiency(self.abilityCharismaModifier);
+        self.skillInvestigation = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.skillMedicine = new modifierProficiency(self.abilityWisdomModifier);
+        self.skillNature = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.skillPerception = new modifierProficiency(self.abilityWisdomModifier);
+        self.skillPerformance = new modifierProficiency(self.abilityCharismaModifier);
+        self.skillPersuasion = new modifierProficiency(self.abilityCharismaModifier);
+        self.skillReligion = new modifierProficiency(self.abilityIntelligenceModifier);
+        self.skillSleightOfHand = new modifierProficiency(self.abilityDexterityModifier);
+        self.skillStealth = new modifierProficiency(self.abilityDexterityModifier);
+        self.skillSurvival = new modifierProficiency(self.abilityWisdomModifier);
 
         self.armorClass = '';
         self.initiative = '';
@@ -95,3 +102,12 @@ var availableClasses = ['Cleric', 'Fighter', 'Rogue', 'Wizard'];
 var availableAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good',
                            'Lawful Neutral', 'Neutral', 'Chaotic Neutral',
                            'Lawful Evil', 'Neutral Evil', 'Chaotic Evil'];
+
+var modifierProficiency = function(abilityModifier) {
+    var self = this;
+
+    self.proficient = ko.observable(false);
+    self.bonus = abilityModifier;
+    
+    return this;
+};

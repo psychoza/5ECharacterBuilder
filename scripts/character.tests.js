@@ -202,6 +202,19 @@ describe('available alignments', function(){
 describe('character skills', function () {
     var character = new window.CharacterBuilder.Character();
 
+    describe('- skill object', function() {
+        var randomSkill = new modifierProficiency(character.abilityCharismaModifier);
+        character.abilityCharisma(12);
+
+        it('must be a "skill" object', function () {
+            expect(modifierProficiency).toBeDefined();
+            expect(randomSkill.proficient).toBeDefined();
+            expect(randomSkill.proficient()).toBe(false);
+            expect(randomSkill.bonus).toBeDefined();
+            expect(randomSkill.bonus()).toBe(1);
+        });
+    });
+
     it('all must exist', function() {
         expect(character.skillAcrobatics).toBeDefined();
         expect(character.skillAnimalHandling).toBeDefined();
@@ -224,39 +237,60 @@ describe('character skills', function () {
     });
 
     it('strength skills use strength modifier as value', function () {
-        expect(character.skillAthletics).toBe(character.abilityStrengthModifier);
+        expect(character.skillAthletics.bonus).toBe(character.abilityStrengthModifier);
     });
 
     it('dexterity skills use dexterity modifier as value', function () {
-        expect(character.skillAcrobatics).toBe(character.abilityDexterityModifier);
-        expect(character.skillSleightOfHand).toBe(character.abilityDexterityModifier);
-        expect(character.skillStealth).toBe(character.abilityDexterityModifier);
-        
+        expect(character.skillAcrobatics.bonus).toBe(character.abilityDexterityModifier);
+        expect(character.skillSleightOfHand.bonus).toBe(character.abilityDexterityModifier);
+        expect(character.skillStealth.bonus).toBe(character.abilityDexterityModifier);
     });
 
     it('intelligence skills use intelligence modifier as value', function () {
-        expect(character.skillArcana).toBe(character.abilityIntelligenceModifier);
-        expect(character.skillHistory).toBe(character.abilityIntelligenceModifier);
-        expect(character.skillInvestigation).toBe(character.abilityIntelligenceModifier);
-        expect(character.skillNature).toBe(character.abilityIntelligenceModifier);
-        expect(character.skillReligion).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillArcana.bonus).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillHistory.bonus).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillInvestigation.bonus).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillNature.bonus).toBe(character.abilityIntelligenceModifier);
+        expect(character.skillReligion.bonus).toBe(character.abilityIntelligenceModifier);
     });
 
     it('wisdom skills use wisdom modifier as value', function () {
-        expect(character.skillAnimalHandling).toBe(character.abilityWisdomModifier);
-        expect(character.skillInsight).toBe(character.abilityWisdomModifier);
-        expect(character.skillMedicine).toBe(character.abilityWisdomModifier);
-        expect(character.skillPerception).toBe(character.abilityWisdomModifier);
-        expect(character.skillSurvival).toBe(character.abilityWisdomModifier);
+        expect(character.skillAnimalHandling.bonus).toBe(character.abilityWisdomModifier);
+        expect(character.skillInsight.bonus).toBe(character.abilityWisdomModifier);
+        expect(character.skillMedicine.bonus).toBe(character.abilityWisdomModifier);
+        expect(character.skillPerception.bonus).toBe(character.abilityWisdomModifier);
+        expect(character.skillSurvival.bonus).toBe(character.abilityWisdomModifier);
     });
 
     it('charisma skills use charisma modifier as value', function () {
-        expect(character.skillDeception).toBe(character.abilityCharismaModifier);
-        expect(character.skillIntimidation).toBe(character.abilityCharismaModifier);
-        expect(character.skillPerformance).toBe(character.abilityCharismaModifier);
-        expect(character.skillPersuasion).toBe(character.abilityCharismaModifier);
+        expect(character.skillDeception.bonus).toBe(character.abilityCharismaModifier);
+        expect(character.skillIntimidation.bonus).toBe(character.abilityCharismaModifier);
+        expect(character.skillPerformance.bonus).toBe(character.abilityCharismaModifier);
+        expect(character.skillPersuasion.bonus).toBe(character.abilityCharismaModifier);
     });
 });
+
+describe('character saving throws', function() {
+    var character = new window.CharacterBuilder.Character();
+
+    describe('saving throw properties', function() {
+        it('must exist', function() {
+            expect(character.savingThrowStrength).toBeDefined();
+            expect(character.savingThrowStrength instanceof modifierProficiency).toBe(true);
+            expect(character.savingThrowDexterity).toBeDefined();
+            expect(character.savingThrowDexterity instanceof modifierProficiency).toBe(true);
+            expect(character.savingThrowConstitution).toBeDefined();
+            expect(character.savingThrowConstitution instanceof modifierProficiency).toBe(true);
+            expect(character.savingThrowIntelligence).toBeDefined();
+            expect(character.savingThrowIntelligence instanceof modifierProficiency).toBe(true);
+            expect(character.savingThrowWisdom).toBeDefined();
+            expect(character.savingThrowWisdom instanceof modifierProficiency).toBe(true);
+            expect(character.savingThrowCharisma).toBeDefined();
+            expect(character.savingThrowCharisma instanceof modifierProficiency).toBe(true);
+        });
+    });
+});
+
 
 // *********************************************************
 // *                                                       *
