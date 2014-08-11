@@ -291,7 +291,6 @@ describe('character saving throws', function() {
     });
 });
 
-
 // *********************************************************
 // *                                                       *
 // *  Consider Changing tests to use a 'fake' database...  *
