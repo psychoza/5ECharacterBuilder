@@ -24,7 +24,12 @@ describe('character', function () {
 			expect(character.characterAlignment != undefined).toBe(true);
 		});
 		it('must have characterExperience', function(){
-			expect(character.characterExperience != undefined).toBe(true);
+		    expect(character.characterExperience != undefined).toBe(true);
+		    expect(character.characterExperience() == 0).toBe(true);
+		});
+		it('must have level', function () {
+		    expect(character.characterLevel != undefined).toBe(true);
+		    expect(character.characterLevel() == 1).toBe(true);
 		});
 		it('must have abilityStrength', function(){
 		    expect(character.abilityStrength != undefined).toBe(true);
@@ -288,6 +293,33 @@ describe('character saving throws', function() {
             expect(character.savingThrowCharisma).toBeDefined();
             expect(character.savingThrowCharisma instanceof modifierProficiency).toBe(true);
         });
+    });
+});
+
+describe('experience and level logic', function() {
+    var character;
+    beforeEach(function() {
+        character = new window.CharacterBuilder.Character();
+    });
+
+    it('must calculate level based on experience input', function () {
+        character.characterExperience(300);
+        expect(character.characterLevel() == 2).toBe(true);
+        character.characterExperience("4");
+        expect(character.characterLevel() == 1).toBe(true);
+        character.characterExperience(899);
+        expect(character.characterLevel() == 2).toBe(true);
+        character.characterExperience(6501);
+        expect(character.characterLevel() == 5).toBe(true);
+    });
+
+    it('must calculate experience based on level input', function() {
+        character.characterLevel(2);
+        expect(character.characterExperience() == 300).toBe(true);
+        character.characterLevel(21);
+        expect(character.characterExperience() == 355000).toBe(true);
+        character.characterLevel(0);
+        expect(character.characterExperience() == 0).toBe(true);
     });
 });
 

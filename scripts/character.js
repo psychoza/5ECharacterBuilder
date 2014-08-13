@@ -10,8 +10,43 @@
         self.characterAlignment = ko.observable('');
         self.characterBackground = ko.observable('');
         self.characterRace = ko.observable('');
-        self.characterExperience = ko.observable('');
+        self.characterExperience = ko.observable(0);
+        var levelArray = {
+            "0": 1, "300": 2, "900": 3, "2700": 4, "6500": 5,
+            "14000": 6, "23000": 7, "34000": 8, "48000": 9, "64000": 10,
+            "85000": 11, "100000": 12, "120000": 13, "140000": 14, "165000": 15,
+            "195000": 16,"225000": 17, "265000": 18, "305000": 19, "355000": 20,
+        };
 
+        self.characterLevel = ko.computed({
+            read: function () {
+                var curxp = parseInt(self.characterExperience());
+                var curlvl = 1;
+
+                for (var key in levelArray) {
+                    if (curxp >= key) {
+                        curlvl = levelArray[key];
+                    } else {
+                        return curlvl;
+                    }
+                }
+
+                return curlvl;
+            },
+            write: function (lvl) {
+                if (lvl > 20)
+                    lvl = 20;
+                else if (lvl < 1)
+                    lvl = 1;
+
+                for (var key in levelArray) {
+                    if (lvl == levelArray[key]) {
+                        self.characterExperience(parseInt(key));
+                    } 
+                }
+            }
+        });
+        
         var modifierCalculation = function (abilityScore) { return ( Math.floor(abilityScore / 2) - 5); }
         self.abilityStrength = ko.observable(10);
         self.abilityStrengthModifier = ko.computed({ read: function() { return modifierCalculation(self.abilityStrength()); } });

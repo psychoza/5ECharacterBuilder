@@ -26,6 +26,8 @@
         Class: <select data-bind="options: availableClasses, value: characterClass, optionsCaption: 'Choose...'"></select><br />
         Alignment: <select data-bind="options: availableAlignments, value: characterAlignment, optionsCaption: 'Choose...'"></select><br />
         Background: <input type="text" data-bind="value: characterBackground" /><br />
+        Experience: <input type="text" data-bind="value: characterExperience, valueUpdate:'afterkeydown'" /><br />
+        Level: <input type="text" data-bind="value: characterLevel, valueUpdate:'afterkeydown'" /><br />
     </div>
     <br />
     <div id="abilityScores">
