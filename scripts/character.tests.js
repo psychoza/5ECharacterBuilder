@@ -380,6 +380,49 @@ describe('character storage', function () {
                 character = new window.CharacterBuilder.Character();
             });
 
+            it("characterName", function () {
+                character.characterName('Test');
+                saveCharacter(character);
+                character.characterName('');
+                loadCharacter(character);
+                expect(character.characterName()).toEqual('Test');
+            });
+            it("characterClass", function () {
+                character.characterClass('Fighter');
+                saveCharacter(character);
+                character.characterClass('');
+                loadCharacter(character);
+                expect(character.characterClass()).toEqual('Fighter');
+            });
+            it("characterAlignment", function () {
+                character.characterAlignment('Neutral');
+                saveCharacter(character);
+                character.characterAlignment('');
+                loadCharacter(character);
+                expect(character.characterAlignment()).toEqual('Neutral');
+            });
+            it("characterBackground", function () {
+                character.characterBackground('Soldier');
+                saveCharacter(character);
+                character.characterBackground('');
+                loadCharacter(character);
+                expect(character.characterBackground()).toEqual('Soldier');
+            });
+            it("characterExperience", function () {
+                character.characterExperience(300);
+                saveCharacter(character);
+                character.characterExperience(0);
+                loadCharacter(character);
+                expect(character.characterExperience()).toEqual(300);
+            });
+            it("characterLevel", function () {
+                character.characterLevel(2);
+                saveCharacter(character);
+                character.characterLevel(0);
+                loadCharacter(character);
+                expect(character.characterLevel()).toEqual(2);
+            });
+
             it("abilityStrength", function () {
                 character.abilityStrength(11);
                 saveCharacter(character);
@@ -387,7 +430,6 @@ describe('character storage', function () {
                 loadCharacter(character);
                 expect(character.abilityStrength()).toEqual(11);
             });
-
             it("abilityDexterity", function () {
                 character.abilityDexterity(11);
                 saveCharacter(character);
@@ -423,35 +465,134 @@ describe('character storage', function () {
                 loadCharacter(character);
                 expect(character.abilityCharisma()).toEqual(11);
             });
+            
+            it("skillAcrobatics", function () {
+                character.skillAcrobatics.proficient(true);
+                saveCharacter(character);
+                character.skillAcrobatics.proficient(false);
+                loadCharacter(character);
+                expect(character.skillAcrobatics.proficient()).toEqual(true);
+            });
+            it("skillAnimalHandling", function () {
+                character.skillAnimalHandling.proficient(true);
+                saveCharacter(character);
+                character.skillAnimalHandling.proficient(false);
+                loadCharacter(character);
+                expect(character.skillAnimalHandling.proficient()).toEqual(true);
+            });
+            it("skillArcana", function () {
+                character.skillArcana.proficient(true);
+                saveCharacter(character);
+                character.skillArcana.proficient(false);
+                loadCharacter(character);
+                expect(character.skillArcana.proficient()).toEqual(true);
+            });
+            it("skillAthletics", function () {
+                character.skillAthletics.proficient(true);
+                saveCharacter(character);
+                character.skillAthletics.proficient(false);
+                loadCharacter(character);
+                expect(character.skillAthletics.proficient()).toEqual(true);
+            });
+            it("skillDeception", function () {
+                character.skillDeception.proficient(true);
+                saveCharacter(character);
+                character.skillDeception.proficient(false);
+                loadCharacter(character);
+                expect(character.skillDeception.proficient()).toEqual(true);
+            });
+            it("skillHistory", function () {
+                character.skillHistory.proficient(true);
+                saveCharacter(character);
+                character.skillHistory.proficient(false);
+                loadCharacter(character);
+                expect(character.skillHistory.proficient()).toEqual(true);
+            });
+            it("skillInsight", function () {
+                character.skillInsight.proficient(true);
+                saveCharacter(character);
+                character.skillInsight.proficient(false);
+                loadCharacter(character);
+                expect(character.skillInsight.proficient()).toEqual(true);
+            });
+            it("skillIntimidation", function () {
+                character.skillIntimidation.proficient(true);
+                saveCharacter(character);
+                character.skillIntimidation.proficient(false);
+                loadCharacter(character);
+                expect(character.skillIntimidation.proficient()).toEqual(true);
+            });
+            it("skillInvestigation", function () {
+                character.skillInvestigation.proficient(true);
+                saveCharacter(character);
+                character.skillInvestigation.proficient(false);
+                loadCharacter(character);
+                expect(character.skillInvestigation.proficient()).toEqual(true);
+            });
+            it("skillMedicine", function () {
+                character.skillMedicine.proficient(true);
+                saveCharacter(character);
+                character.skillMedicine.proficient(false);
+                loadCharacter(character);
+                expect(character.skillMedicine.proficient()).toEqual(true);
+            });
+            it("skillNature", function () {
+                character.skillNature.proficient(true);
+                saveCharacter(character);
+                character.skillNature.proficient(false);
+                loadCharacter(character);
+                expect(character.skillNature.proficient()).toEqual(true);
+            });
+            it("skillPerception", function () {
+                character.skillPerception.proficient(true);
+                saveCharacter(character);
+                character.skillPerception.proficient(false);
+                loadCharacter(character);
+                expect(character.skillPerception.proficient()).toEqual(true);
+            });
+            it("skillPerformance", function () {
+                character.skillPerformance.proficient(true);
+                saveCharacter(character);
+                character.skillPerformance.proficient(false);
+                loadCharacter(character);
+                expect(character.skillPerformance.proficient()).toEqual(true);
+            });
+            it("skillPersuasion", function () {
+                character.skillPersuasion.proficient(true);
+                saveCharacter(character);
+                character.skillPersuasion.proficient(false);
+                loadCharacter(character);
+                expect(character.skillPersuasion.proficient()).toEqual(true);
+            });
+            it("skillReligion", function () {
+                character.skillReligion.proficient(true);
+                saveCharacter(character);
+                character.skillReligion.proficient(false);
+                loadCharacter(character);
+                expect(character.skillReligion.proficient()).toEqual(true);
+            });
+            it("skillSleightOfHand", function () {
+                character.skillSleightOfHand.proficient(true);
+                saveCharacter(character);
+                character.skillSleightOfHand.proficient(false);
+                loadCharacter(character);
+                expect(character.skillSleightOfHand.proficient()).toEqual(true);
+            });
+            it("skillStealth", function () {
+                character.skillStealth.proficient(true);
+                saveCharacter(character);
+                character.skillStealth.proficient(false);
+                loadCharacter(character);
+                expect(character.skillStealth.proficient()).toEqual(true);
+            });
+            it("skillSurvival", function () {
+                character.skillSurvival.proficient(true);
+                saveCharacter(character);
+                character.skillSurvival.proficient(false);
+                loadCharacter(character);
+                expect(character.skillSurvival.proficient()).toEqual(true);
+            });
 
-            it("characterName", function () {
-                character.characterName('Test');
-                saveCharacter(character);
-                character.characterName('');
-                loadCharacter(character);
-                expect(character.characterName()).toEqual('Test');
-            });
-            it("characterClass", function () {
-                character.characterClass('Fighter');
-                saveCharacter(character);
-                character.characterClass('');
-                loadCharacter(character);
-                expect(character.characterClass()).toEqual('Fighter');
-            });
-            it("characterAlignment", function () {
-                character.characterAlignment('Neutral');
-                saveCharacter(character);
-                character.characterAlignment('');
-                loadCharacter(character);
-                expect(character.characterAlignment()).toEqual('Neutral');
-            });
-            it("characterBackground", function () {
-                character.characterBackground('Soldier');
-                saveCharacter(character);
-                character.characterBackground('');
-                loadCharacter(character);
-                expect(character.characterBackground()).toEqual('Soldier');
-            });
         });
     });
 })

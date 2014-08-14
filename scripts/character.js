@@ -122,6 +122,8 @@ var loadCharacter = function (character) {
         character.characterClass(parsed.characterClass);
         character.characterAlignment(parsed.characterAlignment);
         character.characterBackground(parsed.characterBackground);
+        character.characterExperience(parsed.characterExperience);
+        character.characterLevel(parsed.characterLevel);
 
         character.abilityStrength(parsed.abilityStrength); 
         character.abilityDexterity(parsed.abilityDexterity);
@@ -129,6 +131,25 @@ var loadCharacter = function (character) {
         character.abilityIntelligence(parsed.abilityIntelligence);
         character.abilityWisdom(parsed.abilityWisdom);
         character.abilityCharisma(parsed.abilityCharisma);
+
+        character.skillAcrobatics.proficient(parsed.skillAcrobatics.proficient);
+        character.skillAnimalHandling.proficient(parsed.skillAnimalHandling.proficient);
+        character.skillArcana.proficient(parsed.skillArcana.proficient);
+        character.skillAthletics.proficient(parsed.skillAthletics.proficient);
+        character.skillDeception.proficient(parsed.skillDeception.proficient);
+        character.skillHistory.proficient(parsed.skillHistory.proficient);
+        character.skillInsight.proficient(parsed.skillInsight.proficient);
+        character.skillIntimidation.proficient(parsed.skillIntimidation.proficient);
+        character.skillInvestigation.proficient(parsed.skillInvestigation.proficient);
+        character.skillMedicine.proficient(parsed.skillMedicine.proficient);
+        character.skillNature.proficient(parsed.skillNature.proficient);
+        character.skillPerception.proficient(parsed.skillPerception.proficient);
+        character.skillPerformance.proficient(parsed.skillPerformance.proficient);
+        character.skillPersuasion.proficient(parsed.skillPersuasion.proficient);
+        character.skillReligion.proficient(parsed.skillReligion.proficient);
+        character.skillSleightOfHand.proficient(parsed.skillSleightOfHand.proficient);
+        character.skillStealth.proficient(parsed.skillStealth.proficient);
+        character.skillSurvival.proficient(parsed.skillSurvival.proficient);
     }
 }; 
 
