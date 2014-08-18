@@ -150,6 +150,13 @@ var loadCharacter = function (character) {
         character.skillSleightOfHand.proficient(parsed.skillSleightOfHand.proficient);
         character.skillStealth.proficient(parsed.skillStealth.proficient);
         character.skillSurvival.proficient(parsed.skillSurvival.proficient);
+
+        character.savingThrowStrength.proficient(parsed.savingThrowStrength.proficient);
+        character.savingThrowDexterity.proficient(parsed.savingThrowDexterity.proficient);
+        character.savingThrowConstitution.proficient(parsed.savingThrowConstitution.proficient);
+        character.savingThrowIntelligence.proficient(parsed.savingThrowIntelligence.proficient);
+        character.savingThrowWisdom.proficient(parsed.savingThrowWisdom.proficient);
+        character.savingThrowCharisma.proficient(parsed.savingThrowCharisma.proficient);
     }
 }; 
 

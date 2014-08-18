@@ -593,6 +593,48 @@ describe('character storage', function () {
                 expect(character.skillSurvival.proficient()).toEqual(true);
             });
 
+            it("savingThrowStrength", function () {
+                character.savingThrowStrength.proficient(true);
+                saveCharacter(character);
+                character.savingThrowStrength.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowStrength.proficient()).toEqual(true);
+            });
+            it("savingThrowDexterity", function () {
+                character.savingThrowDexterity.proficient(true);
+                saveCharacter(character);
+                character.savingThrowDexterity.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowDexterity.proficient()).toEqual(true);
+            });
+            it("savingThrowConstitution", function () {
+                character.savingThrowConstitution.proficient(true);
+                saveCharacter(character);
+                character.savingThrowConstitution.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowConstitution.proficient()).toEqual(true);
+            });
+            it("savingThrowIntelligence", function () {
+                character.savingThrowIntelligence.proficient(true);
+                saveCharacter(character);
+                character.savingThrowIntelligence.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowIntelligence.proficient()).toEqual(true);
+            });
+            it("savingThrowWisdom", function () {
+                character.savingThrowWisdom.proficient(true);
+                saveCharacter(character);
+                character.savingThrowWisdom.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowWisdom.proficient()).toEqual(true);
+            });
+            it("savingThrowCharisma", function () {
+                character.savingThrowCharisma.proficient(true);
+                saveCharacter(character);
+                character.savingThrowCharisma.proficient(false);
+                loadCharacter(character);
+                expect(character.savingThrowCharisma.proficient()).toEqual(true);
+            });
         });
     });
 })
