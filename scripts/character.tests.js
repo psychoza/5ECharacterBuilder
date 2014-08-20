@@ -323,21 +323,12 @@ describe('experience and level logic', function() {
     });
 });
 
-// *********************************************************
-// *                                                       *
-// *  Consider Changing tests to use a 'fake' database...  *
-// * One that uses the key 5ECharacterBuilderTests so the  *
-// * save state is not at risk for the developer and his   *
-// * character.                                            *
-// *                                                       *
-// ********************************************************* 
-
-describe('character storage', function () {
+describe('character storage', function() {
     describe('save functionality', function() {
-        it('must exist', function () {
+        it('must exist', function() {
             expect(saveCharacter != undefined).toBe(true);
         });
-        it('it calls data storage with provided character information', function () {
+        it('it calls data storage with provided character information', function() {
             var character = new window.CharacterBuilder.Character();
             var storageSpy = spyOn(window.localStorage, 'setItem');
             var savedCharacter = ko.toJSON(character);
@@ -348,17 +339,17 @@ describe('character storage', function () {
         });
     });
 
-    describe('load functionality', function () {
+    describe('load functionality', function() {
         var character;
 
         beforeEach(function() {
             character = new window.CharacterBuilder.Character();
         });
 
-        it('must exist', function () {
+        it('must exist', function() {
             expect(loadCharacter != undefined).toBe(true);
         });
-        it('it calls data storage with the character builder key', function () {
+        it('it calls data storage with the character builder key', function() {
             //debugger;
             var storageSpy = spyOn(window.localStorage, 'getItem');
             loadCharacter(character);
@@ -375,217 +366,217 @@ describe('character storage', function () {
         //    expect(character.abilityStrength()).toEqual(11);
         //}); // it may work -Sean 2014
 
-        describe("it must change the view model's property to the loaded model's property", function () {
-            beforeEach(function () {
+        describe("it must change the view model's property to the loaded model's property", function() {
+            beforeEach(function() {
                 character = new window.CharacterBuilder.Character();
             });
 
-            it("characterName", function () {
+            it("characterName", function() {
                 character.characterName('Test');
                 saveCharacter(character);
                 character.characterName('');
                 loadCharacter(character);
                 expect(character.characterName()).toEqual('Test');
             });
-            it("characterClass", function () {
+            it("characterClass", function() {
                 character.characterClass('Fighter');
                 saveCharacter(character);
                 character.characterClass('');
                 loadCharacter(character);
                 expect(character.characterClass()).toEqual('Fighter');
             });
-            it("characterAlignment", function () {
+            it("characterAlignment", function() {
                 character.characterAlignment('Neutral');
                 saveCharacter(character);
                 character.characterAlignment('');
                 loadCharacter(character);
                 expect(character.characterAlignment()).toEqual('Neutral');
             });
-            it("characterBackground", function () {
+            it("characterBackground", function() {
                 character.characterBackground('Soldier');
                 saveCharacter(character);
                 character.characterBackground('');
                 loadCharacter(character);
                 expect(character.characterBackground()).toEqual('Soldier');
             });
-            it("characterExperience", function () {
+            it("characterExperience", function() {
                 character.characterExperience(300);
                 saveCharacter(character);
                 character.characterExperience(0);
                 loadCharacter(character);
                 expect(character.characterExperience()).toEqual(300);
             });
-            it("characterLevel", function () {
-                character.characterLevel(2);
+            it("characterLevel", function() {
+                character.characterLevel(3);
                 saveCharacter(character);
-                character.characterLevel(0);
+                character.characterLevel(1);
                 loadCharacter(character);
-                expect(character.characterLevel()).toEqual(2);
+                expect(character.characterLevel()).toEqual(3);
             });
 
-            it("abilityStrength", function () {
+            it("abilityStrength", function() {
                 character.abilityStrength(11);
                 saveCharacter(character);
                 character.abilityStrength(10);
                 loadCharacter(character);
                 expect(character.abilityStrength()).toEqual(11);
             });
-            it("abilityDexterity", function () {
+            it("abilityDexterity", function() {
                 character.abilityDexterity(11);
                 saveCharacter(character);
                 character.abilityDexterity(10);
                 loadCharacter(character);
                 expect(character.abilityDexterity()).toEqual(11);
             });
-            it("abilityConstitution", function () {
+            it("abilityConstitution", function() {
                 character.abilityConstitution(11);
                 saveCharacter(character);
                 character.abilityConstitution(10);
                 loadCharacter(character);
                 expect(character.abilityConstitution()).toEqual(11);
             });
-            it("abilityIntelligence", function () {
+            it("abilityIntelligence", function() {
                 character.abilityIntelligence(11);
                 saveCharacter(character);
                 character.abilityIntelligence(10);
                 loadCharacter(character);
                 expect(character.abilityIntelligence()).toEqual(11);
             });
-            it("abilityWisdom", function () {
+            it("abilityWisdom", function() {
                 character.abilityWisdom(11);
                 saveCharacter(character);
                 character.abilityWisdom(10);
                 loadCharacter(character);
                 expect(character.abilityWisdom()).toEqual(11);
             });
-            it("abilityCharisma", function () {
+            it("abilityCharisma", function() {
                 character.abilityCharisma(11);
                 saveCharacter(character);
                 character.abilityCharisma(10);
                 loadCharacter(character);
                 expect(character.abilityCharisma()).toEqual(11);
             });
-            
-            it("skillAcrobatics", function () {
+
+            it("skillAcrobatics", function() {
                 character.skillAcrobatics.proficient(true);
                 saveCharacter(character);
                 character.skillAcrobatics.proficient(false);
                 loadCharacter(character);
                 expect(character.skillAcrobatics.proficient()).toEqual(true);
             });
-            it("skillAnimalHandling", function () {
+            it("skillAnimalHandling", function() {
                 character.skillAnimalHandling.proficient(true);
                 saveCharacter(character);
                 character.skillAnimalHandling.proficient(false);
                 loadCharacter(character);
                 expect(character.skillAnimalHandling.proficient()).toEqual(true);
             });
-            it("skillArcana", function () {
+            it("skillArcana", function() {
                 character.skillArcana.proficient(true);
                 saveCharacter(character);
                 character.skillArcana.proficient(false);
                 loadCharacter(character);
                 expect(character.skillArcana.proficient()).toEqual(true);
             });
-            it("skillAthletics", function () {
+            it("skillAthletics", function() {
                 character.skillAthletics.proficient(true);
                 saveCharacter(character);
                 character.skillAthletics.proficient(false);
                 loadCharacter(character);
                 expect(character.skillAthletics.proficient()).toEqual(true);
             });
-            it("skillDeception", function () {
+            it("skillDeception", function() {
                 character.skillDeception.proficient(true);
                 saveCharacter(character);
                 character.skillDeception.proficient(false);
                 loadCharacter(character);
                 expect(character.skillDeception.proficient()).toEqual(true);
             });
-            it("skillHistory", function () {
+            it("skillHistory", function() {
                 character.skillHistory.proficient(true);
                 saveCharacter(character);
                 character.skillHistory.proficient(false);
                 loadCharacter(character);
                 expect(character.skillHistory.proficient()).toEqual(true);
             });
-            it("skillInsight", function () {
+            it("skillInsight", function() {
                 character.skillInsight.proficient(true);
                 saveCharacter(character);
                 character.skillInsight.proficient(false);
                 loadCharacter(character);
                 expect(character.skillInsight.proficient()).toEqual(true);
             });
-            it("skillIntimidation", function () {
+            it("skillIntimidation", function() {
                 character.skillIntimidation.proficient(true);
                 saveCharacter(character);
                 character.skillIntimidation.proficient(false);
                 loadCharacter(character);
                 expect(character.skillIntimidation.proficient()).toEqual(true);
             });
-            it("skillInvestigation", function () {
+            it("skillInvestigation", function() {
                 character.skillInvestigation.proficient(true);
                 saveCharacter(character);
                 character.skillInvestigation.proficient(false);
                 loadCharacter(character);
                 expect(character.skillInvestigation.proficient()).toEqual(true);
             });
-            it("skillMedicine", function () {
+            it("skillMedicine", function() {
                 character.skillMedicine.proficient(true);
                 saveCharacter(character);
                 character.skillMedicine.proficient(false);
                 loadCharacter(character);
                 expect(character.skillMedicine.proficient()).toEqual(true);
             });
-            it("skillNature", function () {
+            it("skillNature", function() {
                 character.skillNature.proficient(true);
                 saveCharacter(character);
                 character.skillNature.proficient(false);
                 loadCharacter(character);
                 expect(character.skillNature.proficient()).toEqual(true);
             });
-            it("skillPerception", function () {
+            it("skillPerception", function() {
                 character.skillPerception.proficient(true);
                 saveCharacter(character);
                 character.skillPerception.proficient(false);
                 loadCharacter(character);
                 expect(character.skillPerception.proficient()).toEqual(true);
             });
-            it("skillPerformance", function () {
+            it("skillPerformance", function() {
                 character.skillPerformance.proficient(true);
                 saveCharacter(character);
                 character.skillPerformance.proficient(false);
                 loadCharacter(character);
                 expect(character.skillPerformance.proficient()).toEqual(true);
             });
-            it("skillPersuasion", function () {
+            it("skillPersuasion", function() {
                 character.skillPersuasion.proficient(true);
                 saveCharacter(character);
                 character.skillPersuasion.proficient(false);
                 loadCharacter(character);
                 expect(character.skillPersuasion.proficient()).toEqual(true);
             });
-            it("skillReligion", function () {
+            it("skillReligion", function() {
                 character.skillReligion.proficient(true);
                 saveCharacter(character);
                 character.skillReligion.proficient(false);
                 loadCharacter(character);
                 expect(character.skillReligion.proficient()).toEqual(true);
             });
-            it("skillSleightOfHand", function () {
+            it("skillSleightOfHand", function() {
                 character.skillSleightOfHand.proficient(true);
                 saveCharacter(character);
                 character.skillSleightOfHand.proficient(false);
                 loadCharacter(character);
                 expect(character.skillSleightOfHand.proficient()).toEqual(true);
             });
-            it("skillStealth", function () {
+            it("skillStealth", function() {
                 character.skillStealth.proficient(true);
                 saveCharacter(character);
                 character.skillStealth.proficient(false);
                 loadCharacter(character);
                 expect(character.skillStealth.proficient()).toEqual(true);
             });
-            it("skillSurvival", function () {
+            it("skillSurvival", function() {
                 character.skillSurvival.proficient(true);
                 saveCharacter(character);
                 character.skillSurvival.proficient(false);
@@ -593,42 +584,42 @@ describe('character storage', function () {
                 expect(character.skillSurvival.proficient()).toEqual(true);
             });
 
-            it("savingThrowStrength", function () {
+            it("savingThrowStrength", function() {
                 character.savingThrowStrength.proficient(true);
                 saveCharacter(character);
                 character.savingThrowStrength.proficient(false);
                 loadCharacter(character);
                 expect(character.savingThrowStrength.proficient()).toEqual(true);
             });
-            it("savingThrowDexterity", function () {
+            it("savingThrowDexterity", function() {
                 character.savingThrowDexterity.proficient(true);
                 saveCharacter(character);
                 character.savingThrowDexterity.proficient(false);
                 loadCharacter(character);
                 expect(character.savingThrowDexterity.proficient()).toEqual(true);
             });
-            it("savingThrowConstitution", function () {
+            it("savingThrowConstitution", function() {
                 character.savingThrowConstitution.proficient(true);
                 saveCharacter(character);
                 character.savingThrowConstitution.proficient(false);
                 loadCharacter(character);
                 expect(character.savingThrowConstitution.proficient()).toEqual(true);
             });
-            it("savingThrowIntelligence", function () {
+            it("savingThrowIntelligence", function() {
                 character.savingThrowIntelligence.proficient(true);
                 saveCharacter(character);
                 character.savingThrowIntelligence.proficient(false);
                 loadCharacter(character);
                 expect(character.savingThrowIntelligence.proficient()).toEqual(true);
             });
-            it("savingThrowWisdom", function () {
+            it("savingThrowWisdom", function() {
                 character.savingThrowWisdom.proficient(true);
                 saveCharacter(character);
                 character.savingThrowWisdom.proficient(false);
                 loadCharacter(character);
                 expect(character.savingThrowWisdom.proficient()).toEqual(true);
             });
-            it("savingThrowCharisma", function () {
+            it("savingThrowCharisma", function() {
                 character.savingThrowCharisma.proficient(true);
                 saveCharacter(character);
                 character.savingThrowCharisma.proficient(false);
@@ -637,4 +628,28 @@ describe('character storage', function () {
             });
         });
     });
-})
+});
+
+describe('character export', function () {
+    var character;
+    beforeEach(function () {
+        character = new window.CharacterBuilder.Character();
+    });
+
+    it('must exist', function() {
+        expect(typeof (exportCharacter)).toEqual('function');
+    });
+
+    it('must open the file to download', function() {
+        var openSpy = spyOn(window, 'open');
+
+        exportCharacter(character);
+
+        expect(openSpy).toHaveBeenCalled();
+        expect(openSpy).toHaveBeenCalledWith('data:text,' + escape(ko.toJSON(character)));
+    });
+});
+
+describe('character import', function () {
+
+});

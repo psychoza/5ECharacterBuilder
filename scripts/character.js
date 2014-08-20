@@ -1,5 +1,4 @@
 // WIP:
-// Needs to Export!!!! (Export JSON File?)
 // Needs to import exported file!!!!
 
 (function(cb) {
@@ -34,6 +33,8 @@
                 return curlvl;
             },
             write: function (lvl) {
+                if (lvl == self.characterLevel())
+                    return;
                 if (lvl > 20)
                     lvl = 20;
                 else if (lvl < 1)
@@ -123,7 +124,6 @@ var loadCharacter = function (character) {
         character.characterAlignment(parsed.characterAlignment);
         character.characterBackground(parsed.characterBackground);
         character.characterExperience(parsed.characterExperience);
-        character.characterLevel(parsed.characterLevel);
 
         character.abilityStrength(parsed.abilityStrength); 
         character.abilityDexterity(parsed.abilityDexterity);
@@ -158,7 +158,11 @@ var loadCharacter = function (character) {
         character.savingThrowWisdom.proficient(parsed.savingThrowWisdom.proficient);
         character.savingThrowCharisma.proficient(parsed.savingThrowCharisma.proficient);
     }
-}; 
+};
+
+var exportCharacter = function (character) {
+    window.open('data:text,' + escape(ko.toJSON(character)));
+};
 
 var availableClasses = ['Cleric', 'Fighter', 'Rogue', 'Wizard'];
 
