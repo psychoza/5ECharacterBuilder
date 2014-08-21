@@ -651,5 +651,18 @@ describe('character export', function () {
 });
 
 describe('character import', function () {
+    var character;
+    beforeEach(function () {
+        character = new window.CharacterBuilder.Character();
+    });
 
+    it('must exist', function() {
+        expect(typeof (importCharacter)).toEqual('function');
+    });
+    
+    // import process :
+    // calls reader (importCharacter)
+    // set local variable of file output
+    // calls load with file output
+    // character is set and displayed
 });

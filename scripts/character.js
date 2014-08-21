@@ -119,50 +119,74 @@ var loadCharacter = function (character) {
 
     if (loadedCharacter != undefined) {
         var parsed = JSON.parse(loadedCharacter);
-        character.characterName(parsed.characterName);
-        character.characterClass(parsed.characterClass);
-        character.characterAlignment(parsed.characterAlignment);
-        character.characterBackground(parsed.characterBackground);
-        character.characterExperience(parsed.characterExperience);
-
-        character.abilityStrength(parsed.abilityStrength); 
-        character.abilityDexterity(parsed.abilityDexterity);
-        character.abilityConstitution(parsed.abilityConstitution);
-        character.abilityIntelligence(parsed.abilityIntelligence);
-        character.abilityWisdom(parsed.abilityWisdom);
-        character.abilityCharisma(parsed.abilityCharisma);
-
-        character.skillAcrobatics.proficient(parsed.skillAcrobatics.proficient);
-        character.skillAnimalHandling.proficient(parsed.skillAnimalHandling.proficient);
-        character.skillArcana.proficient(parsed.skillArcana.proficient);
-        character.skillAthletics.proficient(parsed.skillAthletics.proficient);
-        character.skillDeception.proficient(parsed.skillDeception.proficient);
-        character.skillHistory.proficient(parsed.skillHistory.proficient);
-        character.skillInsight.proficient(parsed.skillInsight.proficient);
-        character.skillIntimidation.proficient(parsed.skillIntimidation.proficient);
-        character.skillInvestigation.proficient(parsed.skillInvestigation.proficient);
-        character.skillMedicine.proficient(parsed.skillMedicine.proficient);
-        character.skillNature.proficient(parsed.skillNature.proficient);
-        character.skillPerception.proficient(parsed.skillPerception.proficient);
-        character.skillPerformance.proficient(parsed.skillPerformance.proficient);
-        character.skillPersuasion.proficient(parsed.skillPersuasion.proficient);
-        character.skillReligion.proficient(parsed.skillReligion.proficient);
-        character.skillSleightOfHand.proficient(parsed.skillSleightOfHand.proficient);
-        character.skillStealth.proficient(parsed.skillStealth.proficient);
-        character.skillSurvival.proficient(parsed.skillSurvival.proficient);
-
-        character.savingThrowStrength.proficient(parsed.savingThrowStrength.proficient);
-        character.savingThrowDexterity.proficient(parsed.savingThrowDexterity.proficient);
-        character.savingThrowConstitution.proficient(parsed.savingThrowConstitution.proficient);
-        character.savingThrowIntelligence.proficient(parsed.savingThrowIntelligence.proficient);
-        character.savingThrowWisdom.proficient(parsed.savingThrowWisdom.proficient);
-        character.savingThrowCharisma.proficient(parsed.savingThrowCharisma.proficient);
+        setCharacterInformation(character, parsed);
     }
 };
+
+var setCharacterInformation = function(character, parsedJSON) {
+    character.characterName(parsedJSON.characterName);
+    character.characterClass(parsedJSON.characterClass);
+    character.characterAlignment(parsedJSON.characterAlignment);
+    character.characterBackground(parsedJSON.characterBackground);
+    character.characterExperience(parsedJSON.characterExperience);
+
+    character.abilityStrength(parsedJSON.abilityStrength);
+    character.abilityDexterity(parsedJSON.abilityDexterity);
+    character.abilityConstitution(parsedJSON.abilityConstitution);
+    character.abilityIntelligence(parsedJSON.abilityIntelligence);
+    character.abilityWisdom(parsedJSON.abilityWisdom);
+    character.abilityCharisma(parsedJSON.abilityCharisma);
+
+    character.skillAcrobatics.proficient(parsedJSON.skillAcrobatics.proficient);
+    character.skillAnimalHandling.proficient(parsedJSON.skillAnimalHandling.proficient);
+    character.skillArcana.proficient(parsedJSON.skillArcana.proficient);
+    character.skillAthletics.proficient(parsedJSON.skillAthletics.proficient);
+    character.skillDeception.proficient(parsedJSON.skillDeception.proficient);
+    character.skillHistory.proficient(parsedJSON.skillHistory.proficient);
+    character.skillInsight.proficient(parsedJSON.skillInsight.proficient);
+    character.skillIntimidation.proficient(parsedJSON.skillIntimidation.proficient);
+    character.skillInvestigation.proficient(parsedJSON.skillInvestigation.proficient);
+    character.skillMedicine.proficient(parsedJSON.skillMedicine.proficient);
+    character.skillNature.proficient(parsedJSON.skillNature.proficient);
+    character.skillPerception.proficient(parsedJSON.skillPerception.proficient);
+    character.skillPerformance.proficient(parsedJSON.skillPerformance.proficient);
+    character.skillPersuasion.proficient(parsedJSON.skillPersuasion.proficient);
+    character.skillReligion.proficient(parsedJSON.skillReligion.proficient);
+    character.skillSleightOfHand.proficient(parsedJSON.skillSleightOfHand.proficient);
+    character.skillStealth.proficient(parsedJSON.skillStealth.proficient);
+    character.skillSurvival.proficient(parsedJSON.skillSurvival.proficient);
+
+    character.savingThrowStrength.proficient(parsedJSON.savingThrowStrength.proficient);
+    character.savingThrowDexterity.proficient(parsedJSON.savingThrowDexterity.proficient);
+    character.savingThrowConstitution.proficient(parsedJSON.savingThrowConstitution.proficient);
+    character.savingThrowIntelligence.proficient(parsedJSON.savingThrowIntelligence.proficient);
+    character.savingThrowWisdom.proficient(parsedJSON.savingThrowWisdom.proficient);
+    character.savingThrowCharisma.proficient(parsedJSON.savingThrowCharisma.proficient);
+}
 
 var exportCharacter = function (character) {
     window.open('data:text,' + escape(ko.toJSON(character)));
 };
+
+var importCharacter = function() {
+
+};
+//    document.getElementById('file').addEventListener('change', readFile, false);
+
+//function readFile(evt) {
+//    var files = evt.target.files;
+//    var file = files[0];
+//    var reader = new FileReader();
+            
+//    reader.onload = function () {
+//        debugger;
+//        var list = $('#list');
+//        list.text(this.result);
+//        console.log(this.result);
+//    }
+
+//    reader.readAsText(file);
+//}
 
 var availableClasses = ['Cleric', 'Fighter', 'Rogue', 'Wizard'];
 

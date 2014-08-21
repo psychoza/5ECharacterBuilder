@@ -13,13 +13,14 @@
     <h1>Character Builder</h1>
     <a href='tests.html'>Test Runner</a>
     <br />
-    
+
     <div data-bind="visible: window.localStorage !== undefined" style="display: none">
         <button data-bind="click: saveCharacter">Save</button>
         <button data-bind="click: loadCharacter">Load</button>
         <button data-bind="click: exportCharacter">Export</button>
     </div>
     <br />
+    <input type="file" id="file" name="file" enctype="multipart/form-data" />
 
     <div id="descriptions">
         <h3>Character Details</h3>
@@ -79,7 +80,7 @@
                 <td><span data-bind="text: skillAthletics.bonus"></span></td>
                 <td>Athletics</td>
                 <td>Strength</td>
-            </tr> 
+            </tr>
             <tr>
                 <td><input type="checkbox" data-bind='checked: skillDeception.proficient' /></td>
                 <td><span data-bind="text: skillDeception.bonus"></span></td>
@@ -166,7 +167,7 @@
             </tr>
         </table>
     </div>
-    <br/>
+    <br />
     <div id="skills">
         <h3>Saving Throws</h3>
         <table>
@@ -207,7 +208,7 @@
             </tr>
         </table>
     </div>
-    
+
     <script>
         var character = new window.CharacterBuilder.Character();
         ko.applyBindings(character, $('body').get(0));
